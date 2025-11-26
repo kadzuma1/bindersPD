@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Биндеры — Kadzuma Edition</title>
+
+<style>
+    body {
+        margin: 0;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: white;
+        background: linear-gradient(180deg, #141829, #0f0f15);
+        overflow-x: hidden;
+    }
+
+    /* Новогодний фон — ёлки + снег */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            url("data:image/svg+xml;utf8,\
+            <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>\
+            <path d='M0 90 L20 60 L40 90 Z' fill='%23224433'/>\
+            <path d='M50 90 L70 55 L90 90 Z' fill='%23224433'/>\
+            </svg>") repeat-x bottom,
+            radial-gradient(circle at 50% -20%, #2e3c69, #111420 70%);
+        background-size: 300px auto, cover;
+        z-index: -2;
+    }
+
+    /* Анимированный снег сверху */
+    body::after {
+        content: "";
+        position: fixed;
+        top: -10%;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        background: url("data:image/svg+xml;utf8,\
+        <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'>\
+        <circle cx='10' cy='10' r='2' fill='white'/>\
+        <circle cx='50' cy='30' r='2' fill='white'/>\
+        <circle cx='120' cy='50' r='2' fill='white'/>\
+        <circle cx='200' cy='80' r='2' fill='white'/>\
+        </svg>") repeat;
+        animation: snow 15s linear infinite;
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    @keyframes snow {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(200px); }
+    }
+
+    /* KADZUMA EDITION прозрачный */
+    .watermark {
+        font-size: 90px;
+        font-weight: 900;
+        letter-spacing: 6px;
+        margin-top: 25px;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+        user-select: none;
+    }
+
+    h1 {
+        margin-top: -20px;
+        font-size: 50px;
+        font-weight: 900;
+        background: linear-gradient(90deg, #27a8fc, #b764ff);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: letters 1.3s infinite alternate;
+    }
+
+    @keyframes letters {
+        0% { letter-spacing: 1px; transform: translateY(0); }
+        100% { letter-spacing: 3px; transform: translateY(-3px); }
+    }
+
+    /* Контейнер кнопок */
+    .container {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    /* Карточки */
+    .card {
+        width: 260px;
+        height: 140px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #1f7fff, #b56dff);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        transition: 0.35s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Сияние кнопки */
+    .card::before {
+        content: "";
+        position: absolute;
+        width: 180%;
+        height: 180%;
+        background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+        top: -150%;
+        left: -40%;
+        transition: 0.4s;
+        opacity: 0;
+    }
+
+    .card:hover::before {
+        top: -20%;
+        opacity: 1;
+    }
+
+    .card:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+</style>
+</head>
+<body>
+
+<div class="watermark">KADZUMA EDITION</div>
+
+<h1>Биндеры</h1>
+
+<div class="container">
+    <a class="card" href="https://github.com/Baryschkov/PDBinder/releases/download/PDBinder/PDBinder.exe">Биндер от Барышкова</a>
+    <a class="card" href="https://t.me/+AS10Ais70eU5ZDM6">Police Script</a>
+    <a class="card" href="https://t.me/+AS10Ais70eU5ZDM6">SWAT</a>
+    <a class="card" href="https://mega.nz/file/qE0mAQzL#emSFPViUQ4kVsezAl0B5MvjP1NjXVevfDZsL5pZaj44">AllPD</a>
+</div>
+
+</body>
+</html>
